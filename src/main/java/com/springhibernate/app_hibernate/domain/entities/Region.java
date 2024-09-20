@@ -21,4 +21,38 @@ public class Region {
 
     @ManyToOne
     private Country countries;
+
+    public Region() {
+    }
+
+    public Region(Country countries, String name) {
+        this.countries = countries;
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Country getCountries() {
+        return countries;
+    }
+
+    public void setCountries(Country countries) {
+        this.countries = countries;
+    }
+
+    
 }

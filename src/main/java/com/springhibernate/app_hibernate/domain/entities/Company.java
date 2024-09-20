@@ -1,4 +1,5 @@
 package com.springhibernate.app_hibernate.domain.entities;
+
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -10,25 +11,29 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "countries")
-public class Country {
-
+@Table(name = "empresa")
+public class Company {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    @Column(length = 20, nullable = true)
+
+    @Column(length = 50, nullable = false)
     private String name;
 
-    @OneToMany(mappedBy="countries")
-    private List<Region> regions;
+    @Column(length = 100, nullable = false)
+    private String address;
 
-    public Country() {
+    @OneToMany
+    private List<Branch> branches;
+
+    public Company() {
     }
 
-    public Country(String name, List<Region> regions) {
+    public Company(String name, String address, List<Branch> branches) {
         this.name = name;
-        this.regions = regions;
+        this.address = address;
+        this.branches = branches;
     }
 
     public Long getId() {
@@ -47,12 +52,20 @@ public class Country {
         this.name = name;
     }
 
-    public List<Region> getRegions() {
-        return regions;
+    public String getAddress() {
+        return address;
     }
 
-    public void setRegions(List<Region> regions) {
-        this.regions = regions;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public List<Branch> getBranches() {
+        return branches;
+    }
+
+    public void setBranches(List<Branch> branches) {
+        this.branches = branches;
     }
 
     

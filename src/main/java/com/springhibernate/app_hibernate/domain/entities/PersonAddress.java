@@ -9,26 +9,18 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "cities")
-public class City {
+@Table(name = "direccionpersona")
+public class PersonAddress {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    @Column(length = 20, nullable = true)
-    private String name;
+
+    @Column(length = 50, nullable = false)
+    private String address;
 
     @ManyToOne
-    private Region regions;
-
-    public City() {
-    }
-
-    public City(String name, Region regions) {
-        this.name = name;
-        this.regions = regions;
-    }
+    private Person person;
 
     public Long getId() {
         return id;
@@ -38,21 +30,21 @@ public class City {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getAddress() {
+        return address;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public Region getRegions() {
-        return regions;
+    public Person getPerson() {
+        return person;
     }
 
-    public void setRegions(Region regions) {
-        this.regions = regions;
+    public void setPerson(Person person) {
+        this.person = person;
     }
 
-
+    
 }
