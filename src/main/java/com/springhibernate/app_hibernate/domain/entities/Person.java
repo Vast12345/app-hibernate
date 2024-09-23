@@ -1,5 +1,7 @@
 package com.springhibernate.app_hibernate.domain.entities;
 
+import java.util.List;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -7,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
@@ -27,6 +30,9 @@ public class Person {
 
     @ManyToOne
     private Branch branches;
+
+    @OneToMany
+    private List<Transaction> transactions;
 
     @OneToOne(mappedBy="persona", cascade=CascadeType.ALL) // mappedBy attribute is in the Person class since the foreign key is now present in the employee table.
     @PrimaryKeyJoinColumn // Indicates that the primary key of the Person entity is used as the foreign key value for the associated Employee entity.

@@ -1,5 +1,7 @@
 package com.springhibernate.app_hibernate.domain.entities;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,21 +22,23 @@ public class Antique {
     private String name;
 
     @Column(nullable=false)
-    private Double price;
+    private String description;
 
-    @Column(nullable=false)
-    private int stock;
+    @Column(name = "date_added",nullable=false)
+    private LocalDateTime dateAdded;
 
     @ManyToOne
     private Branch branch;
 
+
+
     public Antique() {
     }
 
-    public Antique(String name, Double price, int stock, Branch branch) {
+    public Antique(String name, String description, LocalDateTime dateAdded, Branch branch) {
         this.name = name;
-        this.price = price;
-        this.stock = stock;
+        this.description = description;
+        this.dateAdded = LocalDateTime.now();
         this.branch = branch;
     }
 
@@ -54,20 +58,20 @@ public class Antique {
         this.name = name;
     }
 
-    public Double getPrice() {
-        return price;
+    public String getDescription() {
+        return description;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public int getStock() {
-        return stock;
+    public LocalDateTime getDateAdded() {
+        return dateAdded;
     }
 
-    public void setStock(int stock) {
-        this.stock = stock;
+    public void setStock(LocalDateTime dateAdded) {
+        this.dateAdded = dateAdded;
     }
 
     public Branch getBranch() {
